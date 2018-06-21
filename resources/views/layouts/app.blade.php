@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome-5.0.9/web-fonts-with-css/css/fontawesome-all.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -36,7 +37,21 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @can('products.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{  route('products.index')  }}">Productos</a>
+                        </li>
+                        @endcan()
+                        @can('users.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{  route('users.index')  }}">Usuarios</a>
+                        </li>
+                        @endcan()
+                        @can('roles.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{  route('roles.index')  }}">Roles</a>
+                        </li>
+                        @endcan()
                     </ul>
 
                     <!-- Right Side Of Navbar -->
