@@ -18,6 +18,7 @@
                             <tr>
                                 <th width="10px">ID</th>
                                 <th>Nombre</th>
+                                <th>Descripcion</th>
                                 <th colspan="3">Acciones</th>
                             </tr>
                         </thead>
@@ -26,6 +27,7 @@
                             <tr>
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
+                                <td>{{ $product->description }}</td>
 
                                 @can('products.show')
                                 <td width="10px">
