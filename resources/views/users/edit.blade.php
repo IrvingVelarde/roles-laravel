@@ -8,11 +8,12 @@
                 <div class="panel-heading">Usuario</div>
 
                 <div class="panel-body">                    
-                    {{ Form::open(['route' => 'users.store']) }}
+                    {!! Form::model($user, ['route' => ['users.update', $user->id],
+                    'method' => 'PUT']) !!}
 
                         @include('users.partials.form')
                         
-                    {{ Form::close() }}
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
