@@ -6,39 +6,41 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Lista de Usuarios
+                    Lista de Roles
                 </div>
                 <div class="panel-body">
+                    @can('roles.create')
+                     <a href="{{ route('roles.create') }}" class="btn btn-primary"> <span class="fas fa-plus-square" aria-hidden="true"></span> Agregar Rol</a>
+                     <p>
+                    @endcan
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th width="10px">ID</th>
-                                <th>Nombre</th>
-                                <th>Email</th>
+                                <th>Role</th>
                                 <th colspan="3">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
+                            @foreach($roles as $role)
                             <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                @can('users.show')
+                                <td>{{ $role->id }}</td>
+                                <td>{{ $role->name }}</td>
+                                @can('roles.show')
                                 <td width="10px">
-                                    <a href="{{ route('users.show',$user->id) }}" class="btn btn-info"><span class="fas fa-eye" aria-hidden="true"></span> Ver</a>
+                                    <a href="{{ route('roles.show',$role->id) }}" class="btn btn-info"><span class="fas fa-eye" aria-hidden="true"></span> Ver</a>
                                 </td>
                                 @endcan
 
-                                @can('users.edit')
+                                @can('roles.edit')
                                 <td width="10px">
-                                    <a href="{{ route('users.edit',$user->id) }}" class="btn btn-warning"><span class="fas fa-edit" aria-hidden="true"></span> Editar</a>
+                                    <a href="{{ route('roles.edit',$role->id) }}" class="btn btn-warning"><span class="fas fa-edit" aria-hidden="true"></span> Editar</a>
                                 </td>
                                 @endcan
 
-                                @can('users.destroy')
+                                @can('roles.destroy')
                                 <td width="10px">
-                                    {!!Form::open(['route'=>['users.destroy', $user->id], 'method' => 'DELETE']) !!}
+                                    {!!Form::open(['route'=>['roles.destroy', $role->id], 'method' => 'DELETE']) !!}
                                     <button class="btn btn-danger"> <span class="fas fa-trash" aria-hidden="true"></span> 
                                         Eliminar
                                     </button>
@@ -50,7 +52,7 @@
                         </tbody>
                     </table>
                     <div align="center">
-                        {{ $users->render() }}
+                        {{ $roles->render() }}
                     </div>
                     
                 </div>
